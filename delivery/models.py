@@ -6,3 +6,4 @@ class Delivery(models.Model):
     delivery_date = models.DateTimeField()
     delivery_address = models.CharField(max_length=255)
     delivery_person = models.CharField(max_length=255)
+    customer_name=models.CharField(max_length=255)
