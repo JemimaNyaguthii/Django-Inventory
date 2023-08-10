@@ -6,3 +6,4 @@ class ShoppingCart(models.Model):
     current_date = models.DateTimeField(auto_now_add=True)
     products = models.JSONField()
     total_price = models.FloatField()
+    # products = models.ManyToManyField()
