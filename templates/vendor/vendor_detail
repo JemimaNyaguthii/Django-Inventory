@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F2F2F2;
+            padding: 20px;
+        }
+
+        .vendor-details {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .vendor-details h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .vendor-details p {
+            margin-bottom: 16px;
+        }
+
+        .vendor-details span {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f76707;
+        }
+
+        .vendor-details a {
+            background-color: #f76707;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .vendor-details a:hover {
+            background-color: #f76707;
+        }
+    </style>
+</head>
+<body>
+    <div class="vendor-details">
+        <h2>{{ vendor.first_name }} {{ vendor.last_name }}</h2>
+        <p>Email: {{ vendor.email }}</p>
+        <p>Phone Number: {{ vendor.phone_number }}</p>
+        <p>Address: {{ vendor.address }}</p>
+        <p>Order Number: {{ vendor.order_number }}</p>
+        <p>Order Date: {{ vendor.order_date }}</p>
+        <p>Status: {% if vendor.is_completed %}Completed{% else %}Pending{% endif %}</p>
+        <a href="{% url 'edit-vendor' vendor.pk %}">Edit Vendor</a>
+        <a href="{% url 'delete-vendor' vendor.pk %}">Delete Vendor</a>
+    </div>
+</body>
+</html>

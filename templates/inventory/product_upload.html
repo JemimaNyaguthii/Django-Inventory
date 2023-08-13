@@ -10,6 +10,7 @@
             background-color: #F2F2F2;
             padding: 20px;
         }
+
         .upload-form {
             margin: 20px auto;
             max-width: 400px;
@@ -18,11 +19,13 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .upload-form label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
         }
+
         .upload-form input[type="text"],
         .upload-form textarea {
             width: 100%;
@@ -31,6 +34,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
         .upload-form button {
             background-color: #f76707;
             color: #fff;
@@ -39,16 +43,17 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         .upload-form button:hover {
             background-color: #f76707;
         }
     </style>
 </head>
 <body>
-    <form method="POST"class="upload_form">
-        {%csrf_token%}
-        {{form.as_p}}
-        <button type="submit">save</button>
+    <form method="POST" class="upload-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
     </form>
 </body>
 </html>

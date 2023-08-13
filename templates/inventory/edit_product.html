@@ -3,13 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#b2f2bb;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            margin-top: 7%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 5%;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color:#495057;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color:#d0bfff;
+        }
+    </style>
 </head>
 <body>
-    <h2>Edit Product Details</h2>
-    <form method ="POST">{%csrf_token%}
-        {{form.as_p}}
-        <button type="submit">save</button></form>
-    
+    <div class="container">
+        <h2>Edit Product Details</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="product_name">Product Name</label>
+                <input type="text" id="product_name" name="product_name">
+            </div>
+            <div class="form-group">
+                <label for="product_price">Product Price</label>
+                <input type="text" id="product_price" name="product_price">
+            </div>
+            <button type="submit">Save</button>
+        </form>
+    </div>
 </body>
 </html>

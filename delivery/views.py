@@ -16,7 +16,7 @@ def delivery_upload_view(request):
 
 def delivery_list(request):
     deliveries = Delivery.objects.all()
-    return render(request, "delivery_list.html", {"deliveries": deliveries})
+    return render(request,"delivery_list.html", {"deliveries": deliveries})
 
 def delivery_detail(request, id):
     delivery = Delivery.objects.get(id=id)
