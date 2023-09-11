@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order</title>
+</head>
+<body>
+    <h1>Create Order</h1>
+    <form method="POST" action="{% url 'create_order' %}">
+        {% csrf_token %}
+        <label for="customer">Customer:</label>
+        <select name="customer" required>
+            <option value="">Select a customer</option>
+            {% for customer in customers %}
+                <option value="{{ customer.id }}">{{ customer.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="Create Order">
+    </form>
+</body>
+</html>

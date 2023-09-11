@@ -18,8 +18,16 @@ def add_to_cart(request, product_id):
     return render(request, "add_to_cart.html", {"form": form, "product": product})
 
 def cart_view(request):
-    cart_items = CartItem.objects.all()
-    return render(request, "cart_view.html", {"cart_items": cart_items})
+    user = request.user
+    cart_items = Cart.objects.filter(user=user).prefetch_related('products')
+    total_price = sum(product.price * product.quantity for cart in cart_items for product in cart.products.all())
+    print("Cart Items:", cart_items)
+    print("Total Price:", total_price)
+    context = {
+        'cart_items': cart_items,
+        'total_price': total_price,
+    }
+    return render(request, 'cart/view_cart.html', context)
 
 def remove_from_cart(request, cart_item_id):
     cart_item = CartItem.objects.get(id=cart_item_id)

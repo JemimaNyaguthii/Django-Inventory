@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add to Cart</title>
+</head>
+<body>
+    <h1>Add to Cart</h1>
+    <p>Product: {{ product.items_name }}</p>
+    <p>Price: ksh{{ product.price }}</p>
+    <p>Description: {{ product.description }}</p>
+    <p>Quantity: {{ product.quantity }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Add to Cart">
+    </form>
+    <br>
+    <a href="{% url 'cart' %}">Back to Cart</a>
+</body>
+</html>

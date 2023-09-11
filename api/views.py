@@ -41,6 +41,24 @@ class CustomerDetailView(APIView):
         customer = self.get_object(id)
         customer.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
+class CartListView(APIView):
+    def get(self,request):
+        carts =Cart.objects.all()
+        serializer =CartSerializer(carts,many=True)
+        return Response(serializer.data)
+    def post(self,request):
+        serializer =CartSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+class AddToCartView(APIView):
+    def post(self,request,format=None):
+        cart_id =request.data["cart_id"]
+        product_id = request.data["product_id"]
+        cart =Cart.objects.get(id =cart_id)
+        product =Product.objects.get(id =product_id)
+        updated_cart =Cart.add_product(product)
+        serializer = CartSerializer(updated_cart)
+        return Response(serializer.data)
 
