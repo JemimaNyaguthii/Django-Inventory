@@ -1,6 +1,9 @@
-from django.urls import path
-from . import views
+# project/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+
 urlpatterns = [
-    path('cart/add_to_cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
-    path('cart/', views.view_cart, name='view_cart'),
+    path('admin/', admin.site.urls),
+    path('shoppingCart/', include('shoppingCart.urls')),  # Include the URLs from the 'cart' app
 ]

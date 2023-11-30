@@ -1,6 +1,5 @@
 from django.db import models
 from vendor.models import Vendor
-# Create your models here.
 
 class Product(models.Model):
     vendor = models.ForeignKey(Vendor, null = True, on_delete = models.CASCADE)

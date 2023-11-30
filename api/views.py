@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.response import response
 from rest_framework.views import APIView
-from .models import Customer
-from .serializers import CustomerSerializer
+from .serializer import CustomerSerializer
 
 class CustomerListView(APIView):
     def get(self, request):
@@ -27,7 +25,8 @@ class CustomerDetailView(APIView):
 
     def get(self, request,id, format=None):
         customer = self.get_object(id)
-        serializer = CustomerSerializer(customer)return Response(serializer.data)
+        serializer = CustomerSerializer(customer)
+        return Response(serializer.data)
 
     def put(self, request,id, format=None):
         customer = self.get_object(id)

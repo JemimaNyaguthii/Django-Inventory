@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'payment',
     'shoppingCart',
     'vendor',
+    'rest_framework',
 
 ]
 
