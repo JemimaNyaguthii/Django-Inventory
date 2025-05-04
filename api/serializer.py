@@ -10,7 +10,7 @@ from order.models import Order
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model=Customer
-        fiels="__all__"
+        fields="__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
